@@ -14,20 +14,20 @@ string firstArray = PrintArray(MainArray);
 string secondArray = PrintArray(resultArray);
 Console.WriteLine(firstArray + " -> " + secondArray);
 
-string[] FillArray()
+string[] FillArray() //заполнить массив строками
 {
-    Console.WriteLine("Enter elements separated by spaces: ");
-    string enterSymbols = Console.ReadLine();
+    Console.WriteLine("Enter elements separated by spaces: "); //запрос элементов у пользователя
+    string enterSymbols = Console.ReadLine(); 
     if (enterSymbols == null) { enterSymbols = ""; };
     char[] separators = new char[] { ',', ' ' };
     string[] MainArray = enterSymbols.Split(separators, StringSplitOptions.RemoveEmptyEntries);
     return MainArray;
 }
 
-string PrintArray(string[] MainArray)
+string PrintArray(string[] MainArray) //вывод массива 
 {
     string stringArray = "[";
-    for (int i = 0; i < MainArray.Length; i++)
+    for (int i = 0; i < MainArray.Length; i++) 
     {
         if (i == MainArray.Length - 1)
         {
@@ -40,20 +40,20 @@ string PrintArray(string[] MainArray)
     return stringArray;
 }
 
-int CountStringSymbols(string[] MainArray)
+int CountStringSymbols(string[] MainArray) //подсчет элементов с 3 или меньше символами
 {
-    int counter = 0;
-    foreach (string item in MainArray)
+    int counter = 0;           //переменная счетчик элементов
+    foreach (string item in MainArray) //для каждого элемента в главном массиве
     {
-        if (item.Length <= 3)
+        if (item.Length <= 3)    //если длина элемента <= 3, то
         {
-            counter++;
+            counter++;            //переходим к следующему элементу 
         }
     }
     return counter;
 }
 
-string[] GenerateNewArray(string[] MainArray)
+string[] GenerateNewArray(string[] MainArray) //создание нового массива из элементов из 3х и меньше символов
 {
     int resultArrayLength = CountStringSymbols(MainArray);
     string[] resultArray = new string[resultArrayLength];
