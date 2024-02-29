@@ -8,17 +8,18 @@
 [“1234”, “1567”, “-2”, “computer science”] → [“-2”]
 [“Russia”, “Denmark”, “Kazan”] → []                          */
 
-int [] CreateRandomArray (int size, int min, int max)
-{
-    int [] array = new int [size]; // первый int это тип данных массива, [] - указание массива, 
-    //array - имя массива, new - выделение памяти, int[размер массива]
-    for(int i = 0; i < size; i++)
-      //array[i] - значение элемента в массиве на позиции i
-        array[i] = new Random().Next(min, max + 1);
-    return array;
-}
+﻿string[] MainArray = FillArray();
+string[] resultArray = GenerateNewArray(MainArray);
+string firstArray = PrintArray(MainArray);
+string secondArray = PrintArray(resultArray);
+Console.WriteLine(firstArray + " -> " + secondArray);
 
-int ShowElements(int [] array)
+string[] FillArray()
 {
-    
+    Console.WriteLine("Enter elements separated by spaces: ");
+    string enterSymbols = Console.ReadLine();
+    if (enterSymbols == null) { enterSymbols = ""; };
+    char[] separators = new char[] { ',', ' ' };
+    string[] MainArray = enterSymbols.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+    return MainArray;
 }
