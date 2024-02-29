@@ -23,3 +23,48 @@ string[] FillArray()
     string[] MainArray = enterSymbols.Split(separators, StringSplitOptions.RemoveEmptyEntries);
     return MainArray;
 }
+
+string PrintArray(string[] MainArray)
+{
+    string stringArray = "[";
+    for (int i = 0; i < MainArray.Length; i++)
+    {
+        if (i == MainArray.Length - 1)
+        {
+            stringArray += $"\"{MainArray[i]}\"";
+            break;
+        }
+        stringArray += ($"\"{MainArray[i]}\", ");
+    }
+    stringArray += "]";
+    return stringArray;
+}
+
+int CountStringSymbols(string[] MainArray)
+{
+    int counter = 0;
+    foreach (string item in MainArray)
+    {
+        if (item.Length <= 3)
+        {
+            counter++;
+        }
+    }
+    return counter;
+}
+
+string[] GenerateNewArray(string[] MainArray)
+{
+    int resultArrayLength = CountStringSymbols(MainArray);
+    string[] resultArray = new string[resultArrayLength];
+    int i = 0;
+    foreach (string item in MainArray)
+    {
+        if (item.Length <= 3)
+        {
+            resultArray[i] = item;
+            i++;
+        }
+    }
+    return resultArray;
+}
